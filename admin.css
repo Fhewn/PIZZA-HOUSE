@@ -1,0 +1,884 @@
+/* Admin Panel Stilleri */
+.admin-panel {
+    background-color: #f0f2f5;
+    min-height: 100vh;
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+.admin-header {
+    background: #ffffff;
+    color: #1a1a1a;
+    padding: 0.8rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.admin-header .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.admin-header .logo i {
+    font-size: 1.5rem;
+    color: #3498db;
+}
+
+.admin-header h1 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.admin-nav {
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-btn {
+    background: transparent;
+    border: 1px solid #e1e1e1;
+    padding: 0.5rem 1rem;
+    color: #1a1a1a;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+}
+
+.nav-btn:hover {
+    background: #f8f9fa;
+    border-color: #3498db;
+    color: #3498db;
+}
+
+.nav-btn.cikis {
+    color: #e74c3c;
+    border-color: #e74c3c;
+}
+
+.nav-btn.cikis:hover {
+    background: #e74c3c;
+    color: white;
+}
+
+.admin-main {
+    padding: 1.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.admin-ozet {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.ozet-kart {
+    background: white;
+    padding: 1.2rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.2s ease;
+}
+
+.ozet-kart:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.ozet-kart i {
+    font-size: 1.5rem;
+    color: #3498db;
+    background: rgba(52, 152, 219, 0.1);
+    padding: 0.8rem;
+    border-radius: 8px;
+}
+
+.ozet-bilgi h3 {
+    color: #666;
+    font-size: 0.85rem;
+    margin: 0 0 0.3rem 0;
+    font-weight: 500;
+}
+
+.ozet-bilgi span {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.panel-baslik {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.arama-filtre {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.arama-filtre input,
+.arama-filtre select {
+    padding: 0.5rem 1rem;
+    border: 1px solid #e1e1e1;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    color: #1a1a1a;
+}
+
+.arama-filtre input:focus,
+.arama-filtre select:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
+    outline: none;
+}
+
+.tablo-container {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.siparisler-tablo {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.siparisler-tablo th {
+    background: #f8f9fa;
+    padding: 0.8rem 1rem;
+    font-weight: 500;
+    color: #666;
+    text-align: left;
+    font-size: 0.85rem;
+    border-bottom: 1px solid #eee;
+}
+
+.siparisler-tablo td {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #eee;
+    color: #1a1a1a;
+    font-size: 0.9rem;
+}
+
+.siparisler-tablo tbody tr:hover {
+    background: #f8f9fa;
+}
+
+.siparis-durum-badge {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.siparis-durum-badge.alindi {
+    background: rgba(52, 152, 219, 0.1);
+    color: #3498db;
+}
+
+.siparis-durum-badge.hazirlaniyor {
+    background: rgba(241, 196, 15, 0.1);
+    color: #f1c40f;
+}
+
+.siparis-durum-badge.yolda {
+    background: rgba(230, 126, 34, 0.1);
+    color: #e67e22;
+}
+
+.siparis-durum-badge.teslim-edildi {
+    background: rgba(46, 204, 113, 0.1);
+    color: #2ecc71;
+}
+
+.islem-btn {
+    padding: 0.4rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 0.2rem;
+}
+
+.guncelle-btn {
+    background: rgba(23, 162, 184, 0.1);
+    color: #17a2b8;
+}
+
+.guncelle-btn:hover {
+    background: rgba(23, 162, 184, 0.2);
+}
+
+.sil-btn {
+    background: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+}
+
+.sil-btn:hover {
+    background: rgba(220, 53, 69, 0.2);
+}
+
+/* Modal Stilleri */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+}
+
+.modal-icerik {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 1.5rem;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.modal-baslik {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.modal-baslik h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.form-grup {
+    margin-bottom: 1.2rem;
+}
+
+.form-grup label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.form-grup select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #e1e1e1;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    color: #2c3e50;
+    background: #f8f9fa;
+    transition: all 0.2s;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%236c757d' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: calc(100% - 1rem) center;
+    padding-right: 2.5rem;
+}
+
+.form-grup select:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    outline: none;
+}
+
+.form-butonlar {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+}
+
+.iptal-btn,
+.kaydet-btn {
+    padding: 0.7rem 1.2rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.iptal-btn {
+    background: #f1f3f5;
+    color: #495057;
+}
+
+.iptal-btn:hover {
+    background: #e9ecef;
+}
+
+.kaydet-btn {
+    background: #3498db;
+    color: white;
+}
+
+.kaydet-btn:hover {
+    background: #2980b9;
+    transform: translateY(-1px);
+}
+
+.durum-select {
+    margin-top: 0.5rem;
+}
+
+/* İstatistik Kartları */
+.istatistik-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.gunluk-istatistik, .aylik-takvim {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.istatistik-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.istatistik-kart {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.istatistik-kart:hover {
+    border-color: #3498db;
+}
+
+.istatistik-baslik {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #495057;
+    margin-bottom: 0.5rem;
+}
+
+.istatistik-baslik i {
+    color: #ff6b6b;
+    font-size: 1.2rem;
+}
+
+.istatistik-deger {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #212529;
+}
+
+/* Takvim Stilleri */
+.takvim-container {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    margin-top: 1.5rem;
+}
+
+.takvim-baslik {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid #eee;
+}
+
+.takvim-baslik h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0;
+}
+
+.takvim-nav {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.takvim-nav button {
+    background: #f8f9fa;
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #6c757d;
+}
+
+.takvim-nav button:hover {
+    background: #e9ecef;
+    color: #2c3e50;
+}
+
+.takvim-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.3rem;
+}
+
+.takvim-gun {
+    aspect-ratio: 1;
+    background: #f8f9fa;
+    border-radius: 6px;
+    padding: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    border: 1px solid transparent;
+    font-size: 0.85rem;
+}
+
+.takvim-gun:hover {
+    background: #e9ecef;
+    transform: translateY(-1px);
+}
+
+.takvim-gun.haftanin-gunu {
+    background: none;
+    border: none;
+    font-weight: 600;
+    color: #6c757d;
+    font-size: 0.75rem;
+    cursor: default;
+    padding: 0.2rem;
+}
+
+.takvim-gun.haftanin-gunu:hover {
+    transform: none;
+    background: none;
+}
+
+.takvim-gun.aktif {
+    background: #e3f2fd;
+    border-color: #90caf9;
+}
+
+.takvim-gun.az-siparis {
+    background: #e8f5e9;
+    border-color: #a5d6a7;
+}
+
+.takvim-gun.orta-siparis {
+    background: #fff3e0;
+    border-color: #ffcc80;
+}
+
+.takvim-gun.cok-siparis {
+    background: #fce4ec;
+    border-color: #f8bbd0;
+}
+
+.takvim-gun.bugun {
+    background: #e3f2fd;
+    border-color: #64b5f6;
+    box-shadow: 0 2px 4px rgba(33, 150, 243, 0.1);
+}
+
+.gun-sayi {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #2c3e50;
+    margin-bottom: 0.15rem;
+}
+
+.siparis-sayi {
+    font-size: 0.65rem;
+    color: #6c757d;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 0.15rem 0.3rem;
+    border-radius: 8px;
+    min-width: 18px;
+}
+
+.gun-detay {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 0.4rem;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-size: 0.7rem;
+    color: #2c3e50;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s;
+    z-index: 10;
+    border: 1px solid #eee;
+}
+
+.takvim-gun:hover .gun-detay {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(4px);
+}
+
+.gun-kazanc {
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+/* İstatistik Kartları */
+.ozet-kartlar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.ozet-kart {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: all 0.2s;
+}
+
+.ozet-kart:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.ozet-baslik {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.ozet-baslik i {
+    font-size: 1rem;
+    color: #2c3e50;
+}
+
+.ozet-bilgi {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+/* Sipariş Tablosu */
+.siparisler-tablo {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 1rem;
+}
+
+.siparisler-tablo th {
+    background: #f8f9fa;
+    padding: 0.8rem;
+    font-weight: 600;
+    color: #2c3e50;
+    text-align: left;
+    font-size: 0.9rem;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.siparisler-tablo td {
+    padding: 0.8rem;
+    border-bottom: 1px solid #e9ecef;
+    font-size: 0.9rem;
+    color: #2c3e50;
+}
+
+.siparisler-tablo tr:hover {
+    background: #f8f9fa;
+}
+
+/* Durum Badge'leri */
+.siparis-durum-badge {
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.siparis-durum-badge.alindi {
+    background: #fff3e0;
+    color: #f57c00;
+}
+
+.siparis-durum-badge.hazirlaniyor {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+
+.siparis-durum-badge.yolda {
+    background: #e8f5e9;
+    color: #388e3c;
+}
+
+.siparis-durum-badge.teslim-edildi {
+    background: #f3e5f5;
+    color: #7b1fa2;
+}
+
+/* Ödeme Yöntemi Badge'leri */
+.odeme-yontemi {
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.odeme-yontemi.kapida-odeme {
+    background: #fff3e0;
+    color: #f57c00;
+}
+
+.odeme-yontemi.kredi-karti {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+
+.odeme-yontemi.havale {
+    background: #e8f5e9;
+    color: #388e3c;
+}
+
+/* İşlem Butonları */
+.islem-btn {
+    background: none;
+    border: none;
+    padding: 0.4rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #6c757d;
+}
+
+.islem-btn:hover {
+    background: #f8f9fa;
+    color: #2c3e50;
+}
+
+.islem-btn.guncelle-btn:hover {
+    color: #1976d2;
+}
+
+.islem-btn.sil-btn:hover {
+    color: #dc3545;
+}
+
+/* Responsive Düzenlemeler */
+@media (max-width: 768px) {
+    .ozet-kartlar {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .takvim-container {
+        padding: 0.8rem;
+    }
+    
+    .takvim-gun {
+        padding: 0.3rem;
+        font-size: 0.8rem;
+    }
+    
+    .gun-sayi {
+        font-size: 0.75rem;
+    }
+    
+    .siparis-sayi {
+        font-size: 0.6rem;
+        padding: 0.1rem 0.25rem;
+    }
+    
+    .takvim-gun.haftanin-gunu {
+        font-size: 0.65rem;
+    }
+    
+    .gun-detay {
+        font-size: 0.65rem;
+        padding: 0.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .ozet-kartlar {
+        grid-template-columns: 1fr;
+    }
+    
+    .siparisler-tablo {
+        display: block;
+        overflow-x: auto;
+    }
+    
+    .modal-icerik {
+        width: 95%;
+        padding: 1.2rem;
+    }
+    
+    .form-butonlar {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .iptal-btn,
+    .kaydet-btn {
+        width: 100%;
+        padding: 0.8rem;
+    }
+}
+
+/* Bildirimler */
+.bildirim {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) translateY(50px);
+    min-width: 300px;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 1000;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.bildirim.goster {
+    transform: translate(-50%, -50%) translateY(0);
+    opacity: 1;
+}
+
+.bildirim-icerik {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+}
+
+.bildirim-mesaj {
+    font-size: 0.95rem;
+    color: #1a202c;
+    line-height: 1.4;
+    font-weight: 500;
+}
+
+.bildirim i {
+    font-size: 1.25rem;
+}
+
+.bildirim-kapat {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background: transparent;
+    border: none;
+    color: #a0aec0;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bildirim-kapat:hover {
+    color: #4a5568;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+/* Bildirim türleri */
+.bildirim.success {
+    background: linear-gradient(to right, #f0fff4, #ffffff);
+    border-left: 4px solid #48bb78;
+}
+
+.bildirim.success i:not(.fa-times) {
+    color: #48bb78;
+}
+
+.bildirim.error {
+    background: linear-gradient(to right, #fff5f5, #ffffff);
+    border-left: 4px solid #f56565;
+}
+
+.bildirim.error i:not(.fa-times) {
+    color: #f56565;
+}
+
+.bildirim.warning {
+    background: linear-gradient(to right, #fffaf0, #ffffff);
+    border-left: 4px solid #ed8936;
+}
+
+.bildirim.warning i:not(.fa-times) {
+    color: #ed8936;
+}
+
+.bildirim.info {
+    background: linear-gradient(to right, #ebf8ff, #ffffff);
+    border-left: 4px solid #4299e1;
+}
+
+.bildirim.info i:not(.fa-times) {
+    color: #4299e1;
+} 

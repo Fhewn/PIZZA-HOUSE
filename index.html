@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIZZA HOUSE</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <i class="fas fa-pizza-slice"></i>
+            <h1>PIZZA HOUSE</h1>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="#anasayfa">Ana Sayfa</a></li>
+                <li><a href="#menu">Menü</a></li>
+                <li><a href="#hakkimizda">Hakkımızda</a></li>
+                <li><a href="#iletisim">İletişim</a></li>
+            </ul>
+        </nav>
+        
+        <div class="header-buttons">
+            <button class="siparis-takip-btn" onclick="siparisTakipModalAc()">
+                <i class="fas fa-truck"></i>
+                <span>Sipariş Takip</span>
+            </button>
+            <button class="sepet-btn" onclick="sepetModalAc()">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Sepetim</span>
+                <span class="sepet-sayi">0</span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section id="anasayfa" class="hero">
+            <h1>En Lezzetli Pizzalar</h1>
+            <p>Taze malzemeler, özel hamur ve eşsiz lezzet!</p>
+            <a href="#menu" class="btn">Sipariş Ver</a>
+        </section>
+
+        <section id="menu" class="menu">
+            <h2>Pizza Menümüz</h2>
+            <div class="menu-filtreler">
+                <button class="filtre-btn aktif" data-filtre="hepsi">Hepsi</button>
+                <button class="filtre-btn" data-filtre="klasik">Klasik</button>
+                <button class="filtre-btn" data-filtre="ozel">Özel</button>
+                <button class="filtre-btn" data-filtre="vejeteryan">Vejeteryan</button>
+            </div>
+            <div class="pizza-container">
+                <!-- Pizzalar JavaScript ile eklenecek -->
+            </div>
+        </section>
+
+        <section id="hakkimizda" class="hakkimizda">
+            <h2>Hakkımızda</h2>
+            <div class="hakkimizda-icerik">
+                <div class="hakkimizda-resim">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Restoranımız">
+                </div>
+                <div class="hakkimizda-metin">
+                    <p>2010 yılından beri en kaliteli malzemeler ve özel tariflerimizle sizlere hizmet veriyoruz.</p>
+                    <p>İtalyan ustalarımızın elinden çıkan pizzalarımız, geleneksel İtalyan lezzetini modern dokunuşlarla buluşturuyor.</p>
+                    <p>Her pizza, özenle seçilmiş malzemeler ve özel hamur tarifimizle hazırlanıyor.</p>
+                    <div class="ozellikler">
+                        <div class="ozellik">
+                            <i class="fas fa-clock"></i>
+                            <h3>Hızlı Teslimat</h3>
+                            <p>30 dakika içinde kapınızda</p>
+                        </div>
+                        <div class="ozellik">
+                            <i class="fas fa-leaf"></i>
+                            <h3>Taze Malzemeler</h3>
+                            <p>Günlük taze ürünler</p>
+                        </div>
+                        <div class="ozellik">
+                            <i class="fas fa-pizza-slice"></i>
+                            <h3>Özel Tarifler</h3>
+                            <p>İtalyan ustaların elinden</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="iletisim" class="iletisim">
+            <h2>İletişim</h2>
+            <div class="iletisim-container">
+                <div class="iletisim-bilgi">
+                    <div class="iletisim-kart">
+                        <i class="fas fa-phone"></i>
+                        <h3>Telefon</h3>
+                        <p>+90 555 123 4567</p>
+                    </div>
+                    <div class="iletisim-kart">
+                        <i class="fas fa-envelope"></i>
+                        <h3>E-posta</h3>
+                        <p>info@lezzetlipizza.com</p>
+                    </div>
+                    <div class="iletisim-kart">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Adres</h3>
+                        <p>İstanbul, Türkiye</p>
+                    </div>
+                </div>
+                <div class="iletisim-form">
+                    <h3>Bize Ulaşın</h3>
+                    <form id="iletisimForm">
+                        <input type="text" placeholder="Adınız" required>
+                        <input type="email" placeholder="E-posta Adresiniz" required>
+                        <textarea placeholder="Mesajınız" required></textarea>
+                        <button type="submit" class="btn">Gönder</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Sepet Modal -->
+    <div class="modal" id="sepetModal">
+        <div class="modal-icerik">
+            <div class="modal-baslik">
+                <h2>Sepetim</h2>
+                <button class="kapat-btn" onclick="sepetModalKapat()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <!-- Ürünler Bölümü -->
+            <div class="sepet-bolum">
+                <h3>Ürünlerim</h3>
+                <div class="sepet-urunler">
+                    <!-- Sepet ürünleri JavaScript ile eklenecek -->
+                </div>
+            </div>
+
+            <!-- Sipariş Özeti -->
+            <div class="sepet-ozet">
+                <div class="ara-toplam">
+                    <span>Ara Toplam</span>
+                    <span id="araToplam">0.00 TL</span>
+                </div>
+                <div class="teslimat-ucreti">
+                    <span>Teslimat Ücreti</span>
+                    <span>15.00 TL</span>
+                </div>
+                <div class="toplam">
+                    <span>Toplam Tutar</span>
+                    <span id="toplamFiyat">0.00 TL</span>
+                </div>
+            </div>
+
+            <!-- Sipariş Bilgileri -->
+            <div class="siparis-bolum">
+                <h3>Sipariş Bilgileri</h3>
+                <form id="siparisForm" onsubmit="siparisiTamamla(event)">
+                    <div class="form-grup">
+                        <label for="ad">Ad</label>
+                        <input type="text" id="ad" name="ad" required>
+                    </div>
+                    <div class="form-grup">
+                        <label for="soyad">Soyad</label>
+                        <input type="text" id="soyad" name="soyad" required>
+                    </div>
+                    <div class="form-grup">
+                        <label for="telefon">Telefon Numarası</label>
+                        <input type="tel" id="telefon" name="telefon" required>
+                    </div>
+                    <div class="form-grup">
+                        <label for="adres">Adres</label>
+                        <textarea id="adres" name="adres" required></textarea>
+                    </div>
+
+                    <!-- Ödeme Seçenekleri -->
+                    <div class="odeme-bolum">
+                        <h3>Ödeme Yöntemi</h3>
+                        <div class="odeme-secenekleri">
+                            <div class="odeme-secenek">
+                                <input type="radio" id="kapidaOdeme" name="odemeYontemi" value="kapidaOdeme" checked>
+                                <label for="kapidaOdeme">
+                                    <i class="fas fa-money-bill-wave"></i>
+                                    Kapıda Ödeme
+                                </label>
+                            </div>
+                            <div class="odeme-secenek">
+                                <input type="radio" id="krediKarti" name="odemeYontemi" value="krediKarti">
+                                <label for="krediKarti">
+                                    <i class="fas fa-credit-card"></i>
+                                    Kredi Kartı
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Kredi Kartı Bilgileri -->
+                        <div id="krediKartiBilgileri" class="kart-bilgileri" style="display: none;">
+                            <div class="form-grup">
+                                <label for="kartNumarasi">Kart Numarası</label>
+                                <input type="text" id="kartNumarasi" placeholder="1234 5678 9012 3456">
+                            </div>
+                            <div class="kart-detay">
+                                <div class="form-grup">
+                                    <label for="sonKullanma">Son Kullanma Tarihi</label>
+                                    <input type="text" id="sonKullanma" placeholder="AA/YY">
+                                </div>
+                                <div class="form-grup">
+                                    <label for="cvv">CVV</label>
+                                    <input type="text" id="cvv" placeholder="123">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="siparis-btn">
+                        <i class="fas fa-check"></i>
+                        Siparişi Onayla
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Yükleme Modal -->
+    <div class="yukleme-modal" style="display: none;">
+        <div class="yukleme-icerik">
+            <div class="yukleme-spinner"></div>
+            <h3>Siparişiniz İşleniyor</h3>
+            <p>Lütfen bekleyin...</p>
+        </div>
+    </div>
+
+    <!-- Başarılı Sipariş Modal -->
+    <div class="basarili-modal" style="display: none;">
+        <div class="basarili-icerik">
+            <div class="basarili-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <h3>Siparişiniz Alındı!</h3>
+            <p>Siparişinizi takip etmek için aşağıdaki kodu kullanabilirsiniz:</p>
+            <div class="takip-kodu"></div>
+            <button onclick="basariliModalKapat()" class="takip-btn">Tamam</button>
+        </div>
+    </div>
+
+    <!-- Sipariş Takip Modal -->
+    <div class="siparis-takip-modal" id="siparisTakipModal">
+        <div class="siparis-takip-icerik">
+            <div class="siparis-takip-baslik">
+                <h2>Sipariş Takip</h2>
+                <button class="kapat-btn" onclick="siparisTakipModalKapat()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="siparis-takip-form">
+                <div class="form-grup">
+                    <label for="takipKodu">Sipariş Takip Kodu</label>
+                    <input type="text" id="takipKodu" placeholder="Örn: SP123456" required>
+                </div>
+                <button onclick="siparisiTakipEt()" class="siparis-btn">
+                    <i class="fas fa-search"></i> Siparişi Takip Et
+                </button>
+            </div>
+            
+            <div class="siparis-takip-sonuc" style="display: none;">
+                <div class="siparis-durum-container">
+                    <div class="durum-timeline">
+                        <div class="durum-adim">
+                            <div class="durum-nokta">
+                                <i class="fas fa-clipboard-check"></i>
+                            </div>
+                            <div class="durum-text">Sipariş Alındı</div>
+                        </div>
+                        <div class="durum-adim">
+                            <div class="durum-nokta">
+                                <i class="fas fa-pizza-slice"></i>
+                            </div>
+                            <div class="durum-text">Hazırlanıyor</div>
+                        </div>
+                        <div class="durum-adim">
+                            <div class="durum-nokta">
+                                <i class="fas fa-motorcycle"></i>
+                            </div>
+                            <div class="durum-text">Yolda</div>
+                        </div>
+                        <div class="durum-adim">
+                            <div class="durum-nokta">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="durum-text">Teslim Edildi</div>
+                        </div>
+                    </div>
+                    
+                    <div class="siparis-detay">
+                        <div class="detay-grup">
+                            <span class="detay-baslik">Müşteri</span>
+                            <span class="detay-icerik" id="musteriAdi"></span>
+                        </div>
+                        <div class="detay-grup">
+                            <span class="detay-baslik">Telefon</span>
+                            <span class="detay-icerik" id="telefon"></span>
+                        </div>
+                        <div class="detay-grup">
+                            <span class="detay-baslik">Adres</span>
+                            <span class="detay-icerik" id="adres"></span>
+                        </div>
+                        <div class="detay-grup">
+                            <span class="detay-baslik">Sipariş Tarihi</span>
+                            <span class="detay-icerik" id="siparisTarihi"></span>
+                        </div>
+                        <div class="detay-grup">
+                            <span class="detay-baslik">Toplam Tutar</span>
+                            <span class="detay-icerik" id="toplamTutar"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="tahmini-teslimat">
+                        <div class="teslimat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="teslimat-bilgi">
+                            <h4>Tahmini Teslimat Süresi</h4>
+                            <p>Siparişiniz <strong>15-20 dakika</strong> içinde teslim edilecektir.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sipariş Onay Modal -->
+    <div id="siparisOnayModal" class="modal">
+        <div class="siparis-onay-modal">
+            <div class="baslik">
+                <i class="fas fa-check-circle"></i>
+                <h2>Siparişiniz Başarıyla Alındı!</h2>
+            </div>
+            
+            <div class="takip-kodu-bolum">
+                <div class="takip-kodu-baslik">Siparişinizi takip etmek için kodunuz:</div>
+                <div class="takip-kodu" id="siparisTakipKodu"></div>
+                <button class="kopyala-btn" onclick="takipKoduKopyala()">
+                    <i class="fas fa-copy"></i>
+                    Kopyala
+                </button>
+            </div>
+            
+            <div class="teslimat-suresi">
+                <i class="fas fa-clock"></i>
+                Tahmini Teslimat Süresi: 30-45 dakika
+            </div>
+            
+            <div class="bilgi-notu">
+                Önemli: Siparişinizi takip etmek için bu kodu saklayınız!
+                Siparişinizin durumunu kontrol etmek için ana sayfadaki "Sipariş Takip" bölümünü kullanabilirsiniz.
+            </div>
+            
+            <button class="tamam-btn" onclick="siparisOnayModalKapat()">
+                Tamam
+            </button>
+        </div>
+    </div>
+
+    <!-- Ürün Silme Onay Modal -->
+    <div class="onay-modal" id="silmeOnayModal">
+        <div class="onay-modal-icerik">
+            <div class="onay-modal-baslik">
+                <i class="fas fa-exclamation-circle"></i>
+                <h3>Ürünü Sepetten Çıkar</h3>
+            </div>
+            <div class="onay-modal-mesaj">
+                <p id="silmeOnayMesaj"></p>
+            </div>
+            <div class="onay-modal-butonlar">
+                <button class="iptal-btn" onclick="silmeOnayIptal()">İptal</button>
+                <button class="onayla-btn" onclick="silmeOnayOnayla()">Onayla</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-icerik">
+            <div class="footer-bolum">
+                <h3>Lezzetli Pizza</h3>
+                <p>En lezzetli pizzalar, en hızlı teslimat.</p>
+                <div class="sosyal-medya">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-bolum">
+                <h3>Çalışma Saatleri</h3>
+                <p>Pazartesi - Cuma: 11:00 - 23:00</p>
+                <p>Cumartesi - Pazar: 12:00 - 00:00</p>
+            </div>
+            <div class="footer-bolum">
+                <h3>Hızlı Bağlantılar</h3>
+                <ul>
+                    <li><a href="#anasayfa">Ana Sayfa</a></li>
+                    <li><a href="#menu">Menü</a></li>
+                    <li><a href="#hakkimizda">Hakkımızda</a></li>
+                    <li><a href="#iletisim">İletişim</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-alt">
+            <p>&copy; 2023 Lezzetli Pizza. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

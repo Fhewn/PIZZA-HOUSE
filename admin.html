@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Paneli - PIZZA HOUSE</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body class="admin-panel">
+    <header class="admin-header">
+        <div class="logo">
+            <i class="fas fa-pizza-slice"></i>
+            <h1>PIZZA HOUSE - Admin Paneli</h1>
+        </div>
+        <nav class="admin-nav">
+            <button onclick="window.location.href='index.html'" class="nav-btn">
+                <i class="fas fa-home"></i> Ana Sayfaya Dön
+            </button>
+            <button class="nav-btn cikis" onclick="cikisYap()">
+                <i class="fas fa-sign-out-alt"></i>
+                Çıkış Yap
+            </button>
+        </nav>
+    </header>
+
+    <main class="admin-main">
+        <!-- İstatistik Kartları -->
+        <div class="admin-ozet">
+            <div class="ozet-kart">
+                <div class="ozet-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <div class="ozet-bilgi">
+                    <h3>Toplam Sipariş</h3>
+                    <span id="toplamSiparis">0</span>
+                </div>
+            </div>
+            <div class="ozet-kart">
+                <div class="ozet-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="ozet-bilgi">
+                    <h3>Bekleyen Sipariş</h3>
+                    <span id="bekleyenSiparis">0</span>
+                </div>
+            </div>
+            <div class="ozet-kart">
+                <div class="ozet-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="ozet-bilgi">
+                    <h3>Tamamlanan Sipariş</h3>
+                    <span id="tamamlananSiparis">0</span>
+                </div>
+            </div>
+            <div class="ozet-kart">
+                <div class="ozet-icon">
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+                <div class="ozet-bilgi">
+                    <h3>Günlük Kazanç</h3>
+                    <span id="gunlukKazanc">0.00 ₺</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Günlük İstatistikler ve Takvim -->
+        <div class="istatistik-container">
+            <div class="gunluk-istatistik">
+                <h2>Günlük İstatistikler</h2>
+                <div class="istatistik-grid">
+                    <div class="istatistik-kart">
+                        <div class="istatistik-baslik">
+                            <i class="fas fa-pizza-slice"></i>
+                            <span>En Çok Satan Ürün</span>
+                        </div>
+                        <div class="istatistik-deger" id="enCokSatanUrun">-</div>
+                    </div>
+                    <div class="istatistik-kart">
+                        <div class="istatistik-baslik">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Bugünkü Sipariş</span>
+                        </div>
+                        <div class="istatistik-deger" id="bugunSiparis">0</div>
+                    </div>
+                    <div class="istatistik-kart">
+                        <div class="istatistik-baslik">
+                            <i class="fas fa-check-double"></i>
+                            <span>Bugün Tamamlanan</span>
+                        </div>
+                        <div class="istatistik-deger" id="bugunTamamlanan">0</div>
+                    </div>
+                    <div class="istatistik-kart">
+                        <div class="istatistik-baslik">
+                            <i class="fas fa-truck"></i>
+                            <span>Yoldaki Siparişler</span>
+                        </div>
+                        <div class="istatistik-deger" id="yoldakiSiparisler">0</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="aylik-takvim">
+                <h2>Aylık Sipariş Takvimi</h2>
+                <div class="takvim-baslik">
+                    <button onclick="oncekiAy()" class="takvim-btn"><i class="fas fa-chevron-left"></i></button>
+                    <h3 id="takvimAyYil">Mayıs 2024</h3>
+                    <button onclick="sonrakiAy()" class="takvim-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="takvim-gunler">
+                    <div>Pzt</div>
+                    <div>Sal</div>
+                    <div>Çar</div>
+                    <div>Per</div>
+                    <div>Cum</div>
+                    <div>Cmt</div>
+                    <div>Paz</div>
+                </div>
+                <div class="takvim-grid" id="takvimGrid">
+                    <!-- JavaScript ile doldurulacak -->
+                </div>
+            </div>
+        </div>
+
+        <div class="admin-siparisler">
+            <div class="panel-baslik">
+                <h2>Siparişler</h2>
+                <div class="arama-filtre">
+                    <input type="text" id="siparisArama" placeholder="Sipariş ara..." onkeyup="siparisleriFiltrele()">
+                    <select id="durumFiltre" onchange="siparisleriFiltrele()">
+                        <option value="hepsi">Tüm Durumlar</option>
+                        <option value="alindi">Alındı</option>
+                        <option value="hazirlaniyor">Hazırlanıyor</option>
+                        <option value="yolda">Yolda</option>
+                        <option value="teslim-edildi">Teslim Edildi</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="tablo-container">
+                <table class="siparisler-tablo">
+                    <thead>
+                        <tr>
+                            <th>Takip Kodu</th>
+                            <th>Müşteri</th>
+                            <th>Telefon</th>
+                            <th>Adres</th>
+                            <th>Ürünler</th>
+                            <th>Ödeme Yöntemi</th>
+                            <th>Toplam</th>
+                            <th>Durum</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody id="siparislerTablo">
+                        <!-- Siparişler JavaScript ile eklenecek -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Sipariş Güncelleme Modal -->
+    <div class="modal" id="siparisGuncelleModal">
+        <div class="modal-icerik">
+            <div class="modal-baslik">
+                <h2>Sipariş Durumunu Güncelle</h2>
+                <button class="kapat-btn" onclick="modalKapat('siparisGuncelleModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-govde">
+                <form id="durumGuncelleForm" onsubmit="durumGuncelle(event)">
+                    <div class="form-grup">
+                        <label for="yeniDurum">Yeni Durum</label>
+                        <select id="yeniDurum" required>
+                            <option value="alindi">Alındı</option>
+                            <option value="hazirlaniyor">Hazırlanıyor</option>
+                            <option value="yolda">Yolda</option>
+                            <option value="teslim-edildi">Teslim Edildi</option>
+                        </select>
+                    </div>
+                    <div class="form-butonlar">
+                        <button type="button" class="iptal-btn" onclick="modalKapat('siparisGuncelleModal')">İptal</button>
+                        <button type="submit" class="kaydet-btn">Güncelle</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html> 
